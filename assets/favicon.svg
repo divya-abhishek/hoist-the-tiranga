@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Indian national flag">
+  <defs>
+    <clipPath id="flag-clip"><rect x="2" y="12" width="60" height="40" rx="2"/></clipPath>
+  </defs>
+  <g clip-path="url(#flag-clip)">
+    <rect x="2" y="12" width="60" height="13.333" fill="#FF9933"/>
+    <rect x="2" y="25.333" width="60" height="13.334" fill="#FFFFFF"/>
+    <rect x="2" y="38.667" width="60" height="13.333" fill="#138808"/>
+  </g>
+  <rect x="2" y="12" width="60" height="40" rx="2" fill="none" stroke="#0A0E1E" stroke-opacity=".24"/>
+  <circle cx="32" cy="32" r="5" fill="none" stroke="#000080" stroke-width=".8"/>
+  <g stroke="#000080" stroke-width=".42" stroke-linecap="round">
+    <path d="M32 32V27M32 32l1.294-4.83M32 32l2.5-4.33M32 32l3.536-3.536M32 32l4.33-2.5M32 32l4.83-1.294M32 32h5M32 32l4.83 1.294M32 32l4.33 2.5M32 32l3.536 3.536M32 32l2.5 4.33M32 32l1.294 4.83M32 32v5M32 32l-1.294 4.83M32 32l-2.5 4.33M32 32l-3.536 3.536M32 32l-4.33 2.5M32 32l-4.83 1.294M32 32h-5M32 32l-4.83-1.294M32 32l-4.33-2.5M32 32l-3.536-3.536M32 32l-2.5-4.33M32 32l-1.294-4.83"/>
+  </g>
+  <circle cx="32" cy="32" r=".75" fill="#000080"/>
+</svg>

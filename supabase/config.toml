@@ -1,0 +1,13 @@
+project_id = "hoist-the-tiranga"
+
+# All three endpoints require a valid project API key at the Supabase gateway.
+# hoist/admin-login are still public to this site's publishable key; admin also
+# requires the signed x-admin-token checked inside the function.
+[functions.hoist]
+verify_jwt = true
+
+[functions.admin-login]
+verify_jwt = true
+
+[functions.admin]
+verify_jwt = true

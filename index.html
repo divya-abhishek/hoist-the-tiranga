@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#0a0e1e" />
+
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon-192.png" />
+  <link rel="apple-touch-icon" href="./assets/apple-touch-icon.png" />
+  <link rel="manifest" href="./site.webmanifest" />
+
+  <title>Hoist the Tiranga | Independence Day 2026</title>
+  <meta name="description" content="One India. Thousands of Tirangas. Hoist yours this Independence Day." />
+
+  <!-- Open Graph / social preview -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hoist the Tiranga | Independence Day 2026" />
+  <meta property="og:description" content="One India. Thousands of Tirangas. Hoist yours this Independence Day." />
+  <meta property="og:image" content="assets/share-card-bg.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hoist the Tiranga" />
+  <meta name="twitter:description" content="One India. Thousands of Tirangas. Hoist yours this Independence Day." />
+  <meta name="twitter:image" content="assets/share-card-bg.png" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="hero-head">
+      <p class="eyebrow">15 AUGUST 2026</p>
+      <h1 class="wordmark"><span class="title-text">HOIST THE TIRANGA</span><span class="title-flag tiranga-icon" data-tiranga-icon data-width="31" aria-hidden="true"></span></h1>
+      <p class="subtext">One India. Thousands of Tirangas. Add yours.</p>
+    </header>
+
+    <div class="counter" role="status" aria-live="polite" aria-label="Tirangas hoisted so far">
+      <span class="counter-flag tiranga-icon" data-tiranga-icon data-width="19" aria-hidden="true"></span>
+      <span id="counter-num" class="counter-num">0</span>
+      <span class="counter-word">Tirangas Hoisted</span>
+    </div>
+
+    <main class="map-wrap">
+      <div id="map" class="map" role="application"
+           aria-label="Interactive map of India. Drag to pan, pinch or scroll to zoom, tap a Tiranga to see who hoisted it."></div>
+
+      <div id="map-status" class="map-status show" role="status" aria-live="polite">
+        <span class="map-loader" aria-hidden="true"></span>
+        <span id="map-status-text">Loading the Tirangas…</span>
+        <button id="map-retry" class="map-retry" type="button" hidden>Try again</button>
+      </div>
+
+      <div id="empty-state" class="empty-state" aria-hidden="true">
+        <div class="empty-inner">
+          <span class="empty-flag tiranga-icon" data-tiranga-icon data-width="46" aria-hidden="true"></span>
+          <p class="empty-title">Be among the first to hoist the Tiranga.</p>
+          <p class="empty-sub">As more people join, the map becomes the story.</p>
+        </div>
+      </div>
+
+      <div id="popover" class="popover" role="dialog" aria-label="Tiranga details"></div>
+    </main>
+
+    <footer class="footer">
+      <p class="privacy">No GPS or account required. Your Tiranga location is placed manually.</p>
+      <p class="madewith">Made with <span class="inline-flag tiranga-icon" data-tiranga-icon data-width="18" aria-hidden="true"></span> for 15 August 2026</p>
+    </footer>
+  </div>
+
+  <!-- Floating CTA -->
+  <div class="cta-dock">
+    <button id="cta" class="cta" type="button"><span>Hoist Your Tiranga</span><span class="button-flag tiranga-icon" data-tiranga-icon data-width="21" aria-hidden="true"></span></button>
+  </div>
+
+  <!-- Error banner + toast -->
+  <div id="banner" class="banner" role="alert">
+    <span id="banner-msg"></span>
+    <span class="banner-flag tiranga-icon" data-tiranga-icon data-width="19" aria-hidden="true"></span>
+    <button id="retry-banner" class="banner-retry" type="button" hidden>Retry</button>
+  </div>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- Bottom sheet -->
+  <div id="scrim" class="scrim"></div>
+  <section id="sheet" class="sheet" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Hoist your Tiranga">
+    <div class="sheet-grab" aria-hidden="true"></div>
+    <button id="sheet-close" class="sheet-close" type="button" aria-label="Close">&times;</button>
+
+    <!-- FORM VIEW -->
+    <div class="sheet-view sheet-form">
+      <h2 class="sheet-title">Hoist your Tiranga</h2>
+      <label class="field-label" for="name-input">Your first name</label>
+      <input id="name-input" class="text-input" type="text" inputmode="text" autocomplete="given-name"
+             maxlength="20" placeholder="Your first name" aria-describedby="name-err" />
+      <p id="name-err" class="field-err" role="alert"></p>
+
+      <p class="field-label muted">Gender <span class="opt-tag">optional</span></p>
+      <div class="gender-row" role="radiogroup" aria-label="Gender (optional)">
+        <button class="gender-opt" type="button" role="radio" aria-checked="false" data-g="male">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><circle cx="10" cy="14" r="5.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 10 L20 4 M15 4 H20 V9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>Male</span>
+        </button>
+        <button class="gender-opt" type="button" role="radio" aria-checked="false" data-g="female">
+          <svg viewBox="0 0 24 24" aria-hidden="true" width="18" height="18"><circle cx="12" cy="9" r="5.2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 14.2 V21 M9 18 H15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span>Female</span>
+        </button>
+        <button class="gender-opt sel" type="button" role="radio" aria-checked="true" data-g="unspecified">
+          <span>Prefer not to say</span>
+        </button>
+      </div>
+
+      <button id="to-place" class="primary-btn" type="button" disabled>
+        Choose your spot on India <span aria-hidden="true">→</span>
+      </button>
+    </div>
+
+    <!-- PLACING VIEW -->
+    <div class="sheet-view sheet-placing">
+      <h2 class="sheet-title">Where will you hoist yours?</h2>
+      <p class="place-hint" role="status" aria-live="polite"><span id="place-hint">Tap anywhere on India.</span><span class="place-flag tiranga-icon" data-tiranga-icon data-width="19" aria-hidden="true"></span></p>
+      <button id="hoist-btn" class="primary-btn glow" type="button" disabled>
+        <span>Hoist My Tiranga</span><span class="button-flag tiranga-icon" data-tiranga-icon data-width="20" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <!-- SUCCESS VIEW -->
+    <div class="sheet-view sheet-success">
+      <div class="success-glow" aria-hidden="true"></div>
+      <div class="success-flag" id="success-flag" aria-hidden="true"></div>
+      <p class="jaihind"><span>JAI HIND!</span><span class="jaihind-flag tiranga-icon" data-tiranga-icon data-width="28" aria-hidden="true"></span></p>
+      <p class="success-sub">Your Tiranga has been hoisted.</p>
+      <p id="success-num" class="success-num">You are Tiranga #0</p>
+      <p id="success-name" class="success-name"></p>
+      <button id="share-btn" class="primary-btn" type="button"><span>Share</span><span class="button-flag tiranga-icon" data-tiranga-icon data-width="20" aria-hidden="true"></span></button>
+      <button id="back-btn" class="ghost-btn" type="button">Back to India</button>
+    </div>
+
+    <!-- LIMIT VIEW -->
+    <div class="sheet-view sheet-limit">
+      <span class="limit-flag tiranga-icon" data-tiranga-icon data-width="54" aria-hidden="true"></span>
+      <h2 class="sheet-title">Five and flying</h2>
+      <p class="limit-msg">You've already hoisted 5 Tirangas from this browser.</p>
+      <p class="limit-sub">Thank you for filling India with colour. Share it with a friend so they can add theirs.</p>
+      <button id="limit-share" class="primary-btn" type="button"><span>Share</span><span class="button-flag tiranga-icon" data-tiranga-icon data-width="20" aria-hidden="true"></span></button>
+      <button id="limit-close" class="ghost-btn" type="button">Back to India</button>
+    </div>
+  </section>
+
+  <!-- Scripts: config first, then data, then engine, then app -->
+  <script src="config.js"></script>
+  <script src="assets/india-map.js"></script>
+  <script src="lib/tiranga.js"></script>
+  <script src="lib/backend.js"></script>
+  <script src="lib/mapengine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

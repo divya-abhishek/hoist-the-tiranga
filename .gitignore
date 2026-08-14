@@ -1,0 +1,20 @@
+# Dependencies / build junk (none of these are needed to run the site)
+node_modules/
+package-lock.json
+package.json
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log
+.vscode/
+.idea/
+
+# Secrets — NEVER commit these. The site does not use a .env file; this is a
+# safety net so nothing sensitive is ever pushed. Your admin password
+# lives only in Supabase secrets, never in the repo.
+.env
+.env.*
+supabase/.env
+supabase/.temp/
+*.secret

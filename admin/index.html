@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="googlebot" content="noindex, nofollow" />
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <title>Flag Admin</title>
+  <link rel="stylesheet" href="admin.css" />
+</head>
+<body>
+  <!-- LOGIN -->
+  <section id="login" class="login">
+    <div class="login-card">
+      <h1 class="login-title">Flag Admin</h1>
+      <p id="login-note" class="login-note"></p>
+      <label class="lbl" for="pw">Password</label>
+      <input id="pw" class="input" type="password" autocomplete="current-password" inputmode="numeric" placeholder="••••" />
+      <p id="login-err" class="err" role="alert"></p>
+      <button id="login-btn" class="btn primary" type="button">Log in</button>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section id="dash" class="dash" hidden>
+    <header class="dash-head">
+      <h1>Flag Admin</h1>
+      <button id="logout" class="btn ghost small" type="button">Log out</button>
+    </header>
+
+    <div class="stats">
+      <div class="stat"><span id="s-active" class="stat-n">0</span><span class="stat-l">Active</span></div>
+      <div class="stat"><span id="s-removed" class="stat-n">0</span><span class="stat-l">Removed</span></div>
+      <div class="stat"><span id="s-today" class="stat-n">0</span><span class="stat-l">Added today</span></div>
+    </div>
+
+    <div class="controls">
+      <input id="search" class="input" type="search" placeholder="Search name" autocomplete="off" />
+      <div class="tabs" role="tablist">
+        <button class="tab active" data-f="active" role="tab" aria-selected="true">Active</button>
+        <button class="tab" data-f="removed" role="tab" aria-selected="false">Removed</button>
+      </div>
+    </div>
+
+    <div id="list" class="list" aria-live="polite"></div>
+    <p id="empty" class="empty" hidden>No flags here.</p>
+  </section>
+
+  <!-- Confirm modal -->
+  <div id="confirm" class="confirm-scrim" hidden>
+    <div class="confirm-card">
+      <p id="confirm-msg" class="confirm-msg"></p>
+      <div class="confirm-row">
+        <button id="confirm-no" class="btn ghost" type="button">Cancel</button>
+        <button id="confirm-yes" class="btn danger" type="button">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="admin-toast" role="status"></div>
+
+  <script src="../config.js"></script>
+  <script src="../lib/tiranga.js"></script>
+  <script src="../lib/backend.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
