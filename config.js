@@ -11,5 +11,5 @@
 window.TIRANGA_CONFIG = {
   SUPABASE_URL: "https://znugchebgunanlyixare.supabase.co",
   SUPABASE_PUBLISHABLE_KEY: "sb_publishable_zz5u_VVn0uQQxq0PhZZ15w_1L1AcIT5",
-  SITE_URL: "https://hoist-the-tiranga.freedev.app"
+  SITE_URL: "https://divya-abhishek.github.io/hoist-the-tiranga/"
 };
