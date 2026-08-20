@@ -1,5 +1,5 @@
 # Hoist the Tiranga
-
+<img src="https://i.postimg.cc/R0kn7fwg/HTT.png" alt="website preview">
 An interactive Independence Day experience for 15 August 2026. Visitors enter a first name, manually choose a point on the India map, and hoist a Tiranga that is stored in one shared Supabase database.
 
 - Static frontend: HTML, CSS, and vanilla JavaScript
